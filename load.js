@@ -1,6 +1,6 @@
 const today = new Date().toISOString().split("T")[0];
 
-let data = JSON.parse(localStorage.getItem("plannerData")) || {
+let data = JSON.parse(localStorage.getItem("save")) || {
   categories: {
     study: { name: "Study", color: "#4CAF50", required: 2 }
   },
@@ -11,7 +11,7 @@ let data = JSON.parse(localStorage.getItem("plannerData")) || {
 };
 
 function save() {
-  localStorage.setItem("plannerData", JSON.stringify(data));
+  localStorage.setItem("save", JSON.stringify(data));
 }
 
 function renderCategories() {
@@ -76,5 +76,5 @@ renderCategories();
 renderTasks();
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js");
+  navigator.serviceWorker.register("save.js");
 }
